@@ -51,7 +51,11 @@ dev_dependencies:
 # following page: https://dart.dev/tools/pub/pubspec
 
 # The following section is specific to Flutter packages.
-flutter:
+flutter: #Alttaki fonts ismi klasörden gelmiyor
+  fonts:
+    - family: ElYazisi
+      fonts:
+        - asset: fonts/Montserrat-Italic-VariableFont_wght.ttf #Bu kısımda dosya yolu verdik
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.

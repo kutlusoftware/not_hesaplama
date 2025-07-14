@@ -3,6 +3,8 @@ import 'package:not_hesaplama/Helper/data_helper.dart';
 import 'package:not_hesaplama/Model/ders.dart';
 import 'package:not_hesaplama/constants/sabitler.dart';
 import 'package:not_hesaplama/widgets/ders_listesi.dart';
+import 'package:not_hesaplama/widgets/harf_dropdown_widget.dart';
+import 'package:not_hesaplama/widgets/kredi_dropwdown_widget.dart';
 import 'package:not_hesaplama/widgets/ortalama_goster.dart';
 
 class OrtalamaHesaplaPage extends StatefulWidget {
@@ -22,6 +24,7 @@ class _OrtalamaHesaplaPageState extends State<OrtalamaHesaplaPage> {
 
   @override
   Widget build(BuildContext context) {
+    debugPrint("Build Çalıştı");
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
@@ -75,7 +78,11 @@ class _OrtalamaHesaplaPageState extends State<OrtalamaHesaplaPage> {
                 child: Padding(
                   padding: EdgeInsets.symmetric(vertical: 8, horizontal: 4),
 
-                  child: _builHarfler(),
+                  child: HarfDropdownWidget(
+                    onHarfSecildi: (harfDegeri) {
+                      secilenHarfDegeri = harfDegeri;
+                    },
+                  ),
                 ),
               ),
 
@@ -84,7 +91,11 @@ class _OrtalamaHesaplaPageState extends State<OrtalamaHesaplaPage> {
                 child: Padding(
                   padding: EdgeInsets.symmetric(vertical: 8, horizontal: 4),
 
-                  child: _buildKrediler(),
+                  child: KrediDropwdownWidget(
+                    onKrediSecildi: (secilenKredi) {
+                      secilenKrediDegeri = secilenKredi;
+                    },
+                  ),
                 ),
               ),
               //IconButton Gelecek
@@ -124,30 +135,6 @@ class _OrtalamaHesaplaPageState extends State<OrtalamaHesaplaPage> {
           filled: true,
           fillColor: Sabitler.anaRenk.shade50,
         ),
-      ),
-    );
-  }
-
-  _builHarfler() {
-    return Container(
-      alignment: Alignment.center,
-      padding: Sabitler.dropDownPadding,
-      decoration: BoxDecoration(
-        color: Sabitler.anaRenk.shade50,
-        borderRadius: Sabitler.borderRadius,
-      ),
-      child: DropdownButton<double>(
-        elevation: 16,
-        iconEnabledColor: Sabitler.anaRenk.shade200,
-        focusColor: Colors.transparent,
-        underline: Container(),
-        value: secilenHarfDegeri,
-        items: DataHelper.dropDownMenuBilgisi(),
-        onChanged: (deger) {
-          setState(() {
-            secilenHarfDegeri = deger!;
-          });
-        },
       ),
     );
   }

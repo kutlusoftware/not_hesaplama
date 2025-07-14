@@ -18,7 +18,7 @@ class DersListesi extends StatelessWidget {
                 key: UniqueKey(),
                 direction: DismissDirection.startToEnd,
                 onDismissed: (direction) {
-                  onElemanCikarildi;
+                  onElemanCikarildi(index);
                 },
                 background: Container(
                   color: Colors.red,
@@ -64,8 +64,13 @@ class DersListesi extends StatelessWidget {
         : Center(
             child: Container(
               child: Text(
-                "Lütfen Ders ekleyiniz",
-                style: Sabitler.dersSayisiStyle,
+                "Lütfen Ders Ekleyiniz",
+                style: TextStyle(
+                  color: Sabitler.anaRenk,
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: "ElYazisi",
+                ),
               ),
             ),
           );
